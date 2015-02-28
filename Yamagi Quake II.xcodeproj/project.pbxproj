@@ -330,6 +330,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8A2763101AA208D100AEC1EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A2AB2F01AA1CFA400B54618 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A2761AE1AA2042000AEC1EB;
+			remoteInfo = "Xatrix Game Library";
+		};
+		8A2763121AA208D300AEC1EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A2AB2F01AA1CFA400B54618 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A2762191AA206A400AEC1EB;
+			remoteInfo = "Rogue Game Library";
+		};
+		8A2763141AA208D400AEC1EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8A2AB2F01AA1CFA400B54618 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8A27628E1AA207BE00AEC1EB;
+			remoteInfo = "Zaero Game Library";
+		};
 		8A9D296D1AA1F7BD003427EC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8A2AB2F01AA1CFA400B54618 /* Project object */;
@@ -2697,11 +2718,15 @@
 				8A2AB2F41AA1CFA400B54618 /* Sources */,
 				8A2AB2F51AA1CFA400B54618 /* Frameworks */,
 				8A2AB2F61AA1CFA400B54618 /* Resources */,
+				8A2763161AA208FC00AEC1EB /* Copy Game Libraries */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				8A9D296E1AA1F7BD003427EC /* PBXTargetDependency */,
+				8A2763111AA208D100AEC1EB /* PBXTargetDependency */,
+				8A2763131AA208D300AEC1EB /* PBXTargetDependency */,
+				8A2763151AA208D400AEC1EB /* PBXTargetDependency */,
 			);
 			name = "Yamagi Quake II";
 			productName = "Yamagi Quake II";
@@ -2773,6 +2798,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8A2763161AA208FC00AEC1EB /* Copy Game Libraries */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Game Libraries";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SOURCE_DIR=${BUILD_DIR}/${CONFIGURATION}${EFFECTIVE_PLATFORM_NAME}/\nTARGET_DIR=${CONFIGURATION_BUILD_DIR}/${EXECUTABLE_FOLDER_PATH}/\n\nfunction copy_library {\n\tGAME_DIR=${TARGET_DIR}$1\n\n    if [ ! -e \"${GAME_DIR}\" ]; then\n\t\tmkdir \"${GAME_DIR}\"\n    fi\n\n\trsync -av \"${SOURCE_DIR}$1.so\" \"${GAME_DIR}/game.so\"\n}\n\ncopy_library \"baseq2\"\ncopy_library \"xatrix\"\ncopy_library \"rogue\"\ncopy_library \"zaero\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8A2761AF1AA2042000AEC1EB /* Sources */ = {
@@ -3118,6 +3160,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8A2763111AA208D100AEC1EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A2761AE1AA2042000AEC1EB /* Xatrix Game Library */;
+			targetProxy = 8A2763101AA208D100AEC1EB /* PBXContainerItemProxy */;
+		};
+		8A2763131AA208D300AEC1EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A2762191AA206A400AEC1EB /* Rogue Game Library */;
+			targetProxy = 8A2763121AA208D300AEC1EB /* PBXContainerItemProxy */;
+		};
+		8A2763151AA208D400AEC1EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8A27628E1AA207BE00AEC1EB /* Zaero Game Library */;
+			targetProxy = 8A2763141AA208D400AEC1EB /* PBXContainerItemProxy */;
+		};
 		8A9D296E1AA1F7BD003427EC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8A9D29381AA1F67B003427EC /* Quake II Game Library */;
